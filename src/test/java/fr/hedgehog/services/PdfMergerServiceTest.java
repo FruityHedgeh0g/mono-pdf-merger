@@ -7,7 +7,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import java.io.File;
+import java.io.*;
 import java.time.OffsetDateTime;
 import java.util.Arrays;
 import java.util.List;
@@ -33,8 +33,17 @@ class PdfMergerServiceTest {
     @ParameterizedTest
     @MethodSource("dataSamplesMergePdf")
     void mergePdf_OK(List<String> args) throws Exception {
+
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         System.out.printf("Starting at %tY-%<tm-%<td %<tH:%<tM'%<tS''%<tL\n", OffsetDateTime.now());
-        pdfMergerService.mergePdfAsUrl(args);
+        try (OutputStream outputStream = new FileOutputStream(String.format("src/test/resources/pdf/%tY%<tm%<td%<tH%<tM%<tS%<tL-merged.pdf", OffsetDateTime.now()))) {
+            byteArrayOutputStream.write(pdfMergerService.mergePdfAsUrl(args)); //data
+            byteArrayOutputStream.writeTo(outputStream);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
         System.out.printf("Ending at %tY-%<tm-%<td %<tH:%<tM'%<tS''%<tL\n", OffsetDateTime.now());
     }
 
