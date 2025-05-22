@@ -37,7 +37,6 @@ public class PdfMergerController {
             List<FileUpload> files) throws Exception {
 
         List<File> fileList = files.stream()
-//                .filter(f -> f.uploadedFile() != null)
                 .map(f -> f.uploadedFile().toFile())
                 .toList();
 

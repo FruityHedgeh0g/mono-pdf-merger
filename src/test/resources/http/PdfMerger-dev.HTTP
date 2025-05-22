@@ -3,7 +3,7 @@ POST {{host}}/api/v1/pdf-merger-api
 Content-Type: multipart/form-data; boundary=WebAppBoundary
 
 --WebAppBoundary
-Content-Disposition: form-data; name="files"; filename="dummy.pdf"
+Content-Disposition: form-data; filename="dummy.pdf"
 Content-Type: application/pdf
 
 < ../pdf/dummy1.pdf
@@ -18,12 +18,12 @@ Content-Type: text/plain
 
 {"destination": "{{destination}}"}
 --Boundary
-Content-Disposition: form-data; name="files"; filename="dummy1.pdf"
+Content-Disposition: form-data; filename="dummy1.pdf"
 Content-Type: application/pdf
 
 < ../pdf/dummy1.pdf
 --Boundary
-Content-Disposition: form-data; name="files"; filename="dummy2.pdf"
+Content-Disposition: form-data; filename="dummy2.pdf"
 Content-Type: application/pdf
 
 < ../pdf/dummy2.pdf
