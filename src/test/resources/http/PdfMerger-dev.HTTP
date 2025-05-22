@@ -3,7 +3,7 @@ Content-Type: multipart/form-data; boundary=WebAppBoundary
 
 --WebAppBoundary
 Content-Disposition: form-data; name="metadata"
-Content-Type: text/plain
+Content-Type: application/json
 
 {
   "destination": "{{destination}}"
