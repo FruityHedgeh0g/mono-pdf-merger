@@ -14,3 +14,26 @@ Content-Type: application/pdf
 
 {{pdfResource}}
 --WebAppBoundary--
+###
+
+POST {{host}}/api/v1/pdf-merger-api
+Content-Type: multipart/form-data; boundary=Boundary
+
+--Boundary
+Content-Disposition: form-data; name="metadata"
+Content-Type: application/json
+
+{
+  "destination": "{{destination}}"
+}
+--Boundary
+Content-Disposition: form-data; name="files"; filename="first.pdf"
+Content-Type: application/pdf
+
+{{pdfResource}}
+--Boundary
+Content-Disposition: form-data; name="files"; filename="second.pdf"
+Content-Type: application/pdf
+
+{{pdfResource}}
+--Boundary--

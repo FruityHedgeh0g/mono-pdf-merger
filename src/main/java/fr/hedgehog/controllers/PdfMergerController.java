@@ -29,7 +29,7 @@ public class PdfMergerController {
     @Produces(MediaType.MULTIPART_FORM_DATA)
     public RestResponse<File> mergeAsAMultipart(
             @RestForm("metadata")
-            @PartType(MediaType.TEXT_PLAIN)
+            @PartType(MediaType.APPLICATION_JSON)
             MergePdfMetaData metadata,
 
             @RestForm("files")
