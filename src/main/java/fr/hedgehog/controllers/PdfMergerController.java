@@ -1,5 +1,6 @@
 package fr.hedgehog.controllers;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import fr.hedgehog.pojo.MergePdfMetaData;
 import fr.hedgehog.services.PdfMergerService;
 import jakarta.enterprise.context.ApplicationScoped;
@@ -26,14 +27,14 @@ public class PdfMergerController {
 
     @POST
     @Consumes(MediaType.MULTIPART_FORM_DATA)
-    @Produces(MediaType.MULTIPART_FORM_DATA)
+    @Produces(MediaType.APPLICATION_OCTET_STREAM)
     public RestResponse<File> mergeAsAMultipart(
             @RestForm("metadata")
             @PartType(MediaType.TEXT_PLAIN)
             MergePdfMetaData metadata,
 
-            @RestForm("files")
-            @PartType(MediaType.MULTIPART_FORM_DATA)
+            @RestForm(FileUpload.ALL)
+            @PartType(MediaType.APPLICATION_OCTET_STREAM)
             List<FileUpload> files) throws Exception {
 
         List<File> fileList = files.stream()

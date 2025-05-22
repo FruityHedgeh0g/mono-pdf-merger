@@ -3,14 +3,12 @@ Content-Type: multipart/form-data; boundary=WebAppBoundary
 
 --WebAppBoundary
 Content-Disposition: form-data; name="metadata"
-Content-Type: application/json
+Content-Type: text/plain
 
-{
-  "destination": "{{destination}}"
-}
+{"destination": "{{destination}}"}
 --WebAppBoundary
 Content-Disposition: form-data; name="files"; filename="Hello.pdf"
-Content-Type: application/pdf
+Content-Type: application/octet-stream
 
 {{pdfResource}}
 --WebAppBoundary--
