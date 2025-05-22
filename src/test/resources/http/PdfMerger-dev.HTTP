@@ -1,27 +1,12 @@
-### No PDF
-POST {{host}}/api/v1/pdf-merger-api
-Content-Type: multipart/form-data; boundary=WebAppBoundary
-
---WebAppBoundary
-Content-Disposition: form-data; name="metadata"
-Content-Type: text/plain
-
-{"destination": "{{destination}}"}
---WebAppBoundary--
 ### 1 PDF
 POST {{host}}/api/v1/pdf-merger-api
 Content-Type: multipart/form-data; boundary=WebAppBoundary
 
 --WebAppBoundary
-Content-Disposition: form-data; name="metadata"
-Content-Type: text/plain
-
-{"destination": "{{destination}}"}
---WebAppBoundary
-Content-Disposition: form-data; name="files"; filename="Hello.pdf"
+Content-Disposition: form-data; name="files"; filename="dummy.pdf"
 Content-Type: application/pdf
 
-< ../pdf/dummy.pdf
+< ../pdf/dummy1.pdf
 --WebAppBoundary--
 ### x PDF
 POST {{host}}/api/v1/pdf-merger-api
@@ -33,13 +18,13 @@ Content-Type: text/plain
 
 {"destination": "{{destination}}"}
 --Boundary
-Content-Disposition: form-data; name="files"; filename="first.pdf"
+Content-Disposition: form-data; name="files"; filename="dummy1.pdf"
 Content-Type: application/pdf
 
-{{pdfResource}}
+< ../pdf/dummy1.pdf
 --Boundary
-Content-Disposition: form-data; name="files"; filename="second.pdf"
+Content-Disposition: form-data; name="files"; filename="dummy2.pdf"
 Content-Type: application/pdf
 
-{{pdfResource}}
+< ../pdf/dummy2.pdf
 --Boundary--

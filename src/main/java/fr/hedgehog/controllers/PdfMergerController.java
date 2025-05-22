@@ -36,12 +36,8 @@ public class PdfMergerController {
             @PartType(MediaType.APPLICATION_OCTET_STREAM)
             List<FileUpload> files) throws Exception {
 
-        for (FileUpload upload : files) {
-            File file = upload.uploadedFile().toFile();
-            System.out.println("Received file: " + file.getAbsolutePath() + " (exists=" + file.exists() + ", size=" + file.length() + ")");
-        }
-
         List<File> fileList = files.stream()
+//                .filter(f -> f.uploadedFile() != null)
                 .map(f -> f.uploadedFile().toFile())
                 .toList();
 
