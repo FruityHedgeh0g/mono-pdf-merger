@@ -21,11 +21,9 @@ Content-Type: multipart/form-data; boundary=Boundary
 
 --Boundary
 Content-Disposition: form-data; name="metadata"
-Content-Type: application/json
+Content-Type: text/plain
 
-{
-  "destination": "{{destination}}"
-}
+{"destination": "{{destination}}"}
 --Boundary
 Content-Disposition: form-data; name="files"; filename="first.pdf"
 Content-Type: application/pdf
